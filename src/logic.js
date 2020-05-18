@@ -1,3 +1,6 @@
+
+'use strict';
+
 const mongoose = require('mongoose'); // An Object-Document Mapper for Node.js
 const assert = require('assert'); // N.B: Assert module comes bundled with Node.js.
 mongoose.Promise = global.Promise; // Allows us to use Native promises without throwing error.
@@ -65,5 +68,7 @@ const updateContact = (_id, contact) => {
 };
 
 
+
+
 // Export all methods
-module.exports = {     addContact, getContact, updateContact };
+module.exports = { addContact, getContact, updateContact };

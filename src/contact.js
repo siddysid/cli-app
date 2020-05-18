@@ -2,7 +2,9 @@
 const program = require('commander');
 const { prompt } = require('inquirer'); // require inquirerjs library
 // Require logic.js file and extract controller functions using JS destructuring assignment
-const { addContact, getContact, updateContact, } = require('./logic');
+const { addContact, getContact, updateContact } = require('./logic');
+// To validate json
+const { readFile } = require('./jsonValidate');
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
@@ -66,6 +68,14 @@ program
   .alias('r')
   .description('Get contact')
   .action(name => getContact(name));
+
+// This is to take JSON input and validate the json.
+program
+  .command('filename <name>')
+  .alias('fr')
+  .description('Filename to read json schema')
+  .action(name => readFile(name));
+
 
 // Assert that a VALID command is provided
 if (!process.argv.slice(2).length || !/[arudl]/.test(process.argv.slice(2))) {
